@@ -1,10 +1,11 @@
 import streamlit as st
 from newsapi import NewsApiClient
 from textblob import TextBlob
+import os
 
 
 # Init
-newsapi = NewsApiClient(api_key='2fab1663f88044baa813218a1b9189da')
+newsapi = NewsApiClient(api_key=os.environ.get("NEWS_API_KEY"))
 
 # /v2/top-headlines
 all_articles = newsapi.get_everything(q='covid',language='en',page_size=100)
