@@ -7,7 +7,7 @@ from textblob import TextBlob
 newsapi = NewsApiClient(api_key='2fab1663f88044baa813218a1b9189da')
 
 # /v2/top-headlines
-all_articles = newsapi.get_top_headlines(language='en',country='in')
+all_articles = newsapi.get_everything(q='covid',language='en',page_size=100)
 
 def main():
     st.write("""
@@ -18,7 +18,7 @@ This app shows top good news headlines in india.
     for i in range(0,len(all_articles["articles"])):
         edu=TextBlob(str(all_articles["articles"][i]["content"]))
         x=edu.sentiment.polarity
-        if x>0 and x<=1:
+        if x>=0.3 and x<=1:
             st.write(x)
             st.header(all_articles["articles"][i]["title"])
             st.markdown("<img src='"+all_articles["articles"][i]["urlToImage"]+"' style='width:100%;height:auto;'/>", unsafe_allow_html=True)
