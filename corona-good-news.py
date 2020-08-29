@@ -11,9 +11,9 @@ all_articles = newsapi.get_everything(q='covid',language='en',page_size=100)
 
 def main():
     st.write("""
-# Good News App
+# Covid Good News App
 
-This app shows top good news headlines in india.
+This app shows top good news headlines abput covid-19.
 """)
     for i in range(0,len(all_articles["articles"])):
         edu=TextBlob(str(all_articles["articles"][i]["content"]))
