@@ -13,7 +13,7 @@ def main():
     st.write("""
 # Covid Good News App
 
-This app shows top good news headlines abput covid-19.
+This app shows top good news headlines abput Covid-19.
 """)
     for i in range(0,len(all_articles["articles"])):
         edu=TextBlob(str(all_articles["articles"][i]["content"]))
